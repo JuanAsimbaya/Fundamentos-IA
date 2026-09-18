@@ -34,7 +34,7 @@ st.set_page_config(page_title="Detector de Placas Ecuador", page_icon="🚗")
 st.title("🚗 Detector y Reconocedor de Placas de Ecuador")
 
 # Imagen de referencia
-st.image("placa_referencia.jpg", caption="Ejemplo de placa ecuatoriana", width=150)
+st.image("ExamenFinal/placa_referencia.jpg", caption="Ejemplo de placa ecuatoriana", width=150)
 
 # Subida de imagen
 uploaded_file = st.file_uploader("Sube una imagen de un vehículo", type=["jpg", "jpeg", "png"])
