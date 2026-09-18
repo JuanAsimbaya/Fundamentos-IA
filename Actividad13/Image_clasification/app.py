@@ -25,19 +25,19 @@ st.write("Selecciona una imagen del listado y el modelo te dirá si corresponde 
 
 st.subheader("Archivos disponibles en la carpeta 'imagenes'")
 try:
-    files = os.listdir("imagenes")
+    files = os.listdir("Actividad13/Image_clasification/imagenes")
     st.write(files)
 except FileNotFoundError:
     st.error("❌ La carpeta 'imagenes' no existe en el entorno de despliegue.")
 
-    
+
 # Mostrar foto de referencia fija
 st.subheader("Foto de referencia de Juan")
-st.image("imagenes/juan.jpeg", caption="Juan (referencia)", width='stretch')
+st.image("Actividad13/Image_clasification/imagenes/juan.jpeg", caption="Juan (referencia)", width='stretch')
 
 # Listado de imágenes disponibles para prueba
 imagenes_disponibles = [
-    "imagenes/img1.jpg",
+    "Actividad13/Image_clasification/imagenes/img1.jpg",
     "imagenes/img2.jpg",
     "imagenes/img3.jpg",
     "imagenes/img4.jpg",
