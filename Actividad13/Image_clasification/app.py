@@ -21,11 +21,11 @@ model = load_my_model()
 st.set_page_config(page_title="Clasificador de Rostros", page_icon="🖼️")
 
 st.title("Clasificador de Imágenes: Juan vs Otra Imagen")
-st.write("Selecciona una imagen del listado y el modelo te dirá si corresponde a **Juan** o a **Otra Imagen**.")
+st.write("Selecciona una imagen del listado y el modelo te dirá si corresponde a 'Juan' o a 'Otra Imagen'.")
 
 # Mostrar foto de referencia fija
 st.subheader("Foto de referencia de Juan")
-st.image("Actividad13/Image_clasification/imagenes/juan.jpeg", caption="Juan (referencia)", width=300)
+st.image("Actividad13/Image_clasification/imagenes/juan.jpeg", caption="Juan (referencia)", width=150)
 
 # Listado de imágenes disponibles para prueba
 imagenes_disponibles = [
@@ -33,7 +33,7 @@ imagenes_disponibles = [
     "Actividad13/Image_clasification/imagenes/img2.jpg",
     "Actividad13/Image_clasification/imagenes/img3.jpg",
     "Actividad13/Image_clasification/imagenes/img4.jpg",
-    "Actividad13/Image_clasification/imagenes/img5.jpg",
+    "Actividad13/Image_clasification/imagenes/img5.jpeg",
     "Actividad13/Image_clasification/imagenes/img6.jpg",
     "Actividad13/Image_clasification/imagenes/img7.jpg",
     "Actividad13/Image_clasification/imagenes/img8.jpg",
@@ -46,7 +46,7 @@ imagenes_disponibles = [
 opcion = st.selectbox("Elige una imagen para clasificar:", imagenes_disponibles)
 
 if opcion:
-    st.image(opcion, caption=f"Imagen seleccionada: {opcion}", width=300)
+    st.image(opcion, caption=f"Imagen seleccionada", width=300)
 
     # Preprocesar imagen
     img = image.load_img(opcion, target_size=(224, 224))
