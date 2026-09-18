@@ -46,7 +46,7 @@ imagenes_disponibles = [
 opcion = st.selectbox("Elige una imagen para clasificar:", imagenes_disponibles)
 
 if opcion:
-    st.image(opcion, caption=f"Imagen seleccionada: {opcion}", width='stretch')
+    st.image(opcion, caption=f"Imagen seleccionada: {opcion}", width=300)
 
     # Preprocesar imagen
     img = image.load_img(opcion, target_size=(224, 224))
@@ -59,7 +59,7 @@ if opcion:
     pred_class = np.argmax(prediction, axis=1)[0]
 
     # Mostrar resultado
-    if pred_class == 0:
+    if pred_class == 1:
         st.success("✅ La imagen corresponde a **Juan**")
     else:
         st.warning("⚠️ La imagen corresponde a **Otra Imagen**")
