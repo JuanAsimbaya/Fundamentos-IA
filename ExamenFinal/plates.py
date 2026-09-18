@@ -48,7 +48,7 @@ if uploaded_file is not None:
         # La función predict() de Ultralytics YOLO espera una ruta de archivo o un array de imagen (NumPy)
 
         # Convertir el archivo subido a imagen NumPy
-        file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
+        file_bytes = np.asarray(bytearray(uploaded_file.getvalue()), dtype=np.uint8)
         img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
 
         # Ejecutar predicción con YOLO
