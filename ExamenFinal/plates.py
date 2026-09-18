@@ -58,7 +58,7 @@ if uploaded_file is not None:
 
         if len(boxes) > 0:
             x1, y1, x2, y2 = boxes[0]
-            file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
+            file_bytes = np.asarray(bytearray(uploaded_file.getvalue()), dtype=np.uint8)
             img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
             plate_crop = img[int(y1):int(y2), int(x1):int(x2)]
 
