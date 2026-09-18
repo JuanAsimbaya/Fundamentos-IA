@@ -12,7 +12,7 @@ import os
 # Cargar modelo entrenado
 @st.cache_resource
 def load_my_model():
-    model = load_model(r"Actividad13\Image_clasification\iam_vs_famous_classification_model.keras")
+    model = load_model("Actividad13/Image_clasification/iam_vs_famous_classification_model.keras")
     return model
 
 model = load_my_model()
