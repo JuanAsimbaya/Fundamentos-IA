@@ -1,0 +1,6 @@
+streamlit
+ultralytics
+easyocr==1.7.1
+opencv-python-headless
+numpy==1.26.4
+torch torchvision --index-url https://download.pytorch.org/whl/cpu
