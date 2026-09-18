@@ -25,7 +25,7 @@ st.write("Selecciona una imagen del listado y el modelo te dirá si corresponde 
 
 # Mostrar foto de referencia fija
 st.subheader("Foto de referencia de Juan")
-st.image("Actividad13/Image_clasification/imagenes/juan.jpeg", caption="Juan (referencia)", width='stretch')
+st.image("Actividad13/Image_clasification/imagenes/juan.jpeg", caption="Juan (referencia)", width=300)
 
 # Listado de imágenes disponibles para prueba
 imagenes_disponibles = [
