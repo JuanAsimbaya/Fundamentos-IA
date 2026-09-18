@@ -23,9 +23,17 @@ st.set_page_config(page_title="Clasificador de Rostros", page_icon="🖼️")
 st.title("Clasificador de Imágenes: Juan vs Otra Imagen")
 st.write("Selecciona una imagen del listado y el modelo te dirá si corresponde a **Juan** o a **Otra Imagen**.")
 
+st.subheader("Archivos disponibles en la carpeta 'imagenes'")
+try:
+    files = os.listdir("imagenes")
+    st.write(files)
+except FileNotFoundError:
+    st.error("❌ La carpeta 'imagenes' no existe en el entorno de despliegue.")
+
+    
 # Mostrar foto de referencia fija
 st.subheader("Foto de referencia de Juan")
-st.image("imagenes/juan.jpeg", caption="Juan (referencia)", use_container_width=True)
+st.image("imagenes/juan.jpeg", caption="Juan (referencia)", width='stretch')
 
 # Listado de imágenes disponibles para prueba
 imagenes_disponibles = [
