@@ -58,8 +58,8 @@ if uploaded_file is not None:
 
         if len(boxes) > 0:
             x1, y1, x2, y2 = boxes[0]
-            file_bytes = np.asarray(bytearray(uploaded_file.getvalue()), dtype=np.uint8)
-            img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
+            # file_bytes = np.asarray(bytearray(uploaded_file.getvalue()), dtype=np.uint8)
+            # img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
             plate_crop = img[int(y1):int(y2), int(x1):int(x2)]
 
             st.image(cv2.cvtColor(plate_crop, cv2.COLOR_BGR2RGB), caption="Placa detectada (recorte)")
@@ -70,7 +70,7 @@ if uploaded_file is not None:
     # Botón para OCR
     if st.button("Reconocer Texto con OCR"):
         if "plate_crop" in st.session_state:
-            plate_text = extract_plate_text(st.session_state["plate_crop"])
+            st.image(cv2.cvtColor(st.session_state["plate_crop"], cv2.COLOR_BGR2RGB), caption="Recorte enviado a OCR")           plate_text = extract_plate_text(st.session_state["plate_crop"])
             if plate_text:
                 st.success(f"✅ Placa reconocida: **{plate_text}**")
             else:
