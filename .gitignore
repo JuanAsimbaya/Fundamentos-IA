@@ -342,9 +342,7 @@ ExamenFinal/runs/detect/custom_yolo_model/train_batch141.jpg
 ExamenFinal/runs/detect/custom_yolo_model/train_batch142.jpg
 ExamenFinal/runs/detect/custom_yolo_model/val_batch0_labels.jpg
 ExamenFinal/runs/detect/custom_yolo_model/val_batch0_pred.jpg
-ExamenFinal/placa_referencia.jpg
 ExamenFinal/runs/detect/custom_yolo_model/weights/last.pt
-ExamenFinal/runs/detect/custom_yolo_model/weights/best.pt
 ExamenFinal/Final_Exam_FIA-2/data.yaml
 ExamenFinal/Final_Exam_FIA-2/README.dataset.txt
 ExamenFinal/Final_Exam_FIA-2/README.roboflow.txt
@@ -352,3 +350,4 @@ ExamenFinal/Final_Exam_FIA-2/train/labels.cache
 ExamenFinal/runs/detect/custom_yolo_model/args.yaml
 ExamenFinal/runs/detect/custom_yolo_model/results.csv
 ExamenFinal/yolo26n.pt
+ExamenFinal\3. Custom YOLO Object Detection with Roboflow.ipynb
