@@ -349,5 +349,23 @@ ExamenFinal/Final_Exam_FIA-2/README.roboflow.txt
 ExamenFinal/Final_Exam_FIA-2/train/labels.cache
 ExamenFinal/runs/detect/custom_yolo_model/args.yaml
 ExamenFinal/runs/detect/custom_yolo_model/results.csv
-ExamenFinal/yolo26n.pt
 ExamenFinal/3. Custom YOLO Object Detection with Roboflow.ipynb
+ExamenFinal/runs/detect/custom_yolo_model-2/val_batch0_pred.jpg
+ExamenFinal/runs/detect/custom_yolo_model-2/val_batch0_labels.jpg
+ExamenFinal/runs/detect/custom_yolo_model-2/train_batch142.jpg
+ExamenFinal/runs/detect/custom_yolo_model-2/train_batch141.jpg
+ExamenFinal/runs/detect/custom_yolo_model-2/train_batch140.jpg
+ExamenFinal/runs/detect/custom_yolo_model-2/train_batch2.jpg
+ExamenFinal/runs/detect/custom_yolo_model-2/train_batch1.jpg
+ExamenFinal/runs/detect/custom_yolo_model-2/train_batch0.jpg
+ExamenFinal/runs/detect/custom_yolo_model-2/results.png
+ExamenFinal/runs/detect/custom_yolo_model-2/results.csv
+ExamenFinal/runs/detect/custom_yolo_model-2/labels.jpg
+ExamenFinal/runs/detect/custom_yolo_model-2/confusion_matrix.png
+ExamenFinal/runs/detect/custom_yolo_model-2/confusion_matrix_normalized.png
+ExamenFinal/runs/detect/custom_yolo_model-2/BoxR_curve.png
+ExamenFinal/runs/detect/custom_yolo_model-2/BoxPR_curve.png
+ExamenFinal/runs/detect/custom_yolo_model-2/BoxP_curve.png
+ExamenFinal/runs/detect/custom_yolo_model-2/BoxF1_curve.png
+ExamenFinal/runs/detect/custom_yolo_model-2/args.yaml
+ExamenFinal/runs/detect/custom_yolo_model-2/weights/last.pt
