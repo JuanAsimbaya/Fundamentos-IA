@@ -13,16 +13,18 @@ reader = easyocr.Reader(['en'], gpu=False)
 
 # Función para extraer texto de la placa
 def extract_plate_text(plate_crop):
+    # Recorte inferior para evitar "ECUADOR" y "ANT"
     h = plate_crop.shape[0]
     plate_crop = plate_crop[int(h*0.35):, :]  # recorte inferior
 
+    # Preprocesamiento
     gray = cv2.cvtColor(plate_crop, cv2.COLOR_BGR2GRAY)
-    thresh = cv2.adaptiveThreshold(gray, 255,
-                                   cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
-                                   cv2.THRESH_BINARY, 11, 2)
+    _, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
+    # OCR
     ocr_result = reader.readtext(thresh)
 
+    # Filtrar por patrón de placa ecuatoriana (3 letras + 4 números)
     for _, text, _ in ocr_result:
         text = text.upper().replace(" ", "")
         if re.match(r'^[A-Z]{3}-?\d{4}$', text):
