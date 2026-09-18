@@ -44,7 +44,16 @@ if uploaded_file is not None:
 
     # Botón para detección con YOLO
     if st.button("Detectar Placa con YOLO"):
-        results = custom_model.predict(uploaded_file)
+        # Streamlit pasa el archivo subido como un objeto tipo UploadedFile
+        # La función predict() de Ultralytics YOLO espera una ruta de archivo o un array de imagen (NumPy)
+
+        # Convertir el archivo subido a imagen NumPy
+        file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
+        img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
+
+        # Ejecutar predicción con YOLO
+        results = custom_model.predict(img)
+
         boxes = results[0].boxes.xyxy.cpu().numpy()
 
         if len(boxes) > 0:
