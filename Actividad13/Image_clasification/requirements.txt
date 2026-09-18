@@ -1,3 +1,5 @@
 streamlit
-tensorflow
+joblib
+scikit-learn
 numpy
+tensorflow-cpu==2.18.0
