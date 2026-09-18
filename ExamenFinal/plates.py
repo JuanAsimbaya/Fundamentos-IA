@@ -6,7 +6,7 @@ from ultralytics import YOLO
 import easyocr
 
 # Cargar modelo YOLO entrenado
-custom_model = YOLO('best.pt')
+custom_model = YOLO('ExamenFinal/runs/detect/custom_yolo_model/weights/best.pt')
 
 # Inicializar OCR
 reader = easyocr.Reader(['en'], gpu=False)
