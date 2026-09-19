@@ -33,10 +33,10 @@ def extract_plate_text(plate_crop):
 
 # Configuración de la página
 st.set_page_config(page_title="Detector de Placas Ecuador", page_icon="🚗")
-st.title("🚗 Detector y Reconocedor de Placas de Ecuador")
+st.title("🚗 Detector de Placas de Ecuador")
 
 # Imagen de referencia
-st.image("ExamenFinal/placa_referencia.jpg", caption="Ejemplo de placa ecuatoriana", width=150)
+st.image("ExamenFinal/placa_referencia.jpg", caption="Placa Ejemplo.", width=150)
 
 # Subida de imagen
 uploaded_file = st.file_uploader("Sube una imagen de un vehículo", type=["jpg", "jpeg", "png"])
@@ -51,13 +51,25 @@ if uploaded_file is not None:
 
         # Convertir el archivo subido a imagen NumPy
         file_bytes = np.asarray(bytearray(uploaded_file.getvalue()), dtype=np.uint8)
-        img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
+        img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)        # equivalente a usar cv2.imread("foto.jpg")
 
         # Ejecutar predicción con YOLO
         results = custom_model.predict(img)
 
         boxes = results[0].boxes.xyxy.cpu().numpy()
 
+        if len(results[0].boxes) > 0:
+            annotated_img = results[0].plot()
+            st.image(cv2.cvtColor(annotated_img, cv2.COLOR_BGR2RGB), caption="Detección YOLO con bounding box y etiqueta")
+
+            # Tomar la primera placa detectada
+            x1, y1, x2, y2 = results[0].boxes.xyxy.cpu().numpy()[0]
+            plate_crop = img[int(y1):int(y2), int(x1):int(x2)]
+            st.session_state["plate_crop"] = plate_crop
+        else:
+            st.warning("⚠️ No se detectó ninguna placa en la imagen.")        
+
+        """
         if len(boxes) > 0:
             x1, y1, x2, y2 = boxes[0]
             # file_bytes = np.asarray(bytearray(uploaded_file.getvalue()), dtype=np.uint8)
@@ -69,6 +81,7 @@ if uploaded_file is not None:
         else:
             st.warning("⚠️ No se detectó ninguna placa en la imagen.")
 
+        """
     # Botón para OCR
     if st.button("Reconocer Texto con OCR"):
         if "plate_crop" in st.session_state:

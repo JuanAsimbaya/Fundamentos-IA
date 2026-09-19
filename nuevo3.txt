@@ -1,0 +1,126 @@
+Tengo un modelo entrenado en VGG16 para clasificación de imagenes.
+El modelo está entrenado para reconecer mi imagen o rostro (una categoria)
+La otra categoria es rostros de cualquier famoso o imagen de backgraound como bosques, paisajes.
+Entonce el modelo clasifica una imagen de entrada como 'Juan' u 'Otra Imagen'.
+
+Ahora debo usar este modelo para crear un archivo python en el que debo usar 
+streamlit y joblib para armar una interface que permita desplegar el uso del modelo 
+en una dirección web.
+
+Este archivo .py, requirments.txt y el modelo .keras entrenado sé
+que debo subirlos a un repositorio de gitHub.
+
+Ya tengo enlazado gitHub con streamlit community cloud...
+
+Ayudame a crear la interface en el .py de forma que el usuario
+pueda seleccionar entre imagenes y el modelo indique si se trata de 'Juan' u 'otro'
+-------------------------------------------
+!pip install roboflow
+
+from roboflow import Roboflow
+rf = Roboflow(api_key="vMnnGl1vxt0n7h0Kguzu")
+project = rf.workspace("juan-asimbaya").project("final_exam_fia")
+version = project.version(2)
+dataset = version.download("yolo26")
+===============================================================================================
+
+Prototipo de un sistema de visión computacional aplicado al área de seguridad (control de acceso vehicular)
+
+Cualquier medida adicional de seguridad en esto momentos, suma.
+Alternativa a acceso tradicional con RFID.
+
+Ventajas:
+Versatilidad, escalabilidad, integración.
+
+Mejor control de acceso de residentes/empleados y visitas autorizadas (proveedores, familiares, clientes, etc)
+Mayor automatización: menos intervención humana, acceso más rápido.
+Seguridad: control estricto de vehículos autorizados.
+Trazabilidad: historial de entradas y salidas para auditoría.
+Integración: se conecta con sistemas de visitas, reservas de parqueo y alertas de seguridad.
+Logística: control de flotas, registro de entrada/salida de camiones en bodegas.
+Retail: integración con centros comerciales para validar parqueo gratuito según compras.
+
+Un sistema real ya en producción debería integrarse con base de datos (usuarios, tarifas, listas de alertas)
+y hardware (cámaras IP, barreras automáticas).
+
+==============================
+
+Para desarrollo del prototipo era necesario dos pasos fundamentales:
+Detección de placas de vehículos
+y Extracción de N° de placa.
+
+Planteado así el tema para el 1er paso es evidente que le modelo usado para la detección de objetos fue YOLO
+y para el 2do paso se usó OCR..
+
+El dataset para entrenar el modelo YOLO26 se preparó en roboflow, con un total de 50 imagenes que se etiquetaron todas en la clase 'plate'
+
+Con técnicas de augmentation (
+ Rotation: Between -5° and +5°
+Grayscale: Apply to 15% of images
+Brightness: Between -15% and +15% )
+ Se obtuvo un total de 120 imagenes.
+
+Para la fase de entrenamiento se descargó el dataset con código generado por Roboflow.
+Específicamente se uso le versión nano de YOLO26:
+
+model = YOLO('yolo26n.pt')  # Using nano version as base
+
+# Train the model on your custom dataset
+results = model.train(
+    data=f'{dataset.location}/data.yaml',  # Path to dataset config
+    epochs=20,  # Number of training epochs
+    imgsz=640,  # Image size
+    batch=8,   # Batch size
+    name='custom_yolo_model'  # Name for the training run
+)
+
+===========================================
+OpenCV es una biblioteca de visión artificial de código abierto
+Captura y preprocesamiento: OpenCV lee los fotogramas (frames) de una cámara web o un archivo de video, y si es necesario, ajusta su tamaño o color.
+Inferencia con YOLO: Cada fotograma procesado por OpenCV se le entrega al modelo YOLO para que detecte los objetos y devuelva 
+las coordenadas de las cajas delimitadoras (bounding boxes).
+Visualización: OpenCV dibuja esos resultados sobre la imagen original y muestra el video resultante en pantalla para el usuario.
+
+Las métricas del resultado del entrenamiento del modelo YOLO arrojaron:
+mAP50  mAP50-95
+0.995      0.927
+
+
+=============================
+Conclusiones y mejoras
+1. YOLO es extremadamente bueno para detectar patrones repetitivos como las placas:
+forma geométrica rectangular de fondo blanco, con caracteres negros de alto contraste.
+2. Al no cambiar la estructura del objeto, el modelo no necesita miles de ejemplos para entender qué es una placa. 
+El augmentation (rotaciones, brillo, zoom) fue suficiente para darle la robustez necesaria para este set de prueba.
+3. Acceso a datos.
+
+Mejoras:
+Aumentar y mejorar el dataset: fotos de placas con mayor ángulo de toma, fotos en condiciones nocturnas (obscuridad, alto brillo)
+Fotos de autos de turismo (placa verde), servicio público (placa naranja), cuerpo diplomático (placa celeste).
+
+Con este mejor dataset se debería hacer el proceso de augemntation mejorado (shear o perspective).
+
+Incluir placas de motocicletas.
+=====================
+PRESENTACION
+Introducción
+
+
+Solución Técnica
+
+Resultados
+
+Conclusiones
+
+Mejoras
+
+
+
+
+
+
+
+
+
+
+
