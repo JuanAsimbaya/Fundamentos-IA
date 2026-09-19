@@ -69,19 +69,6 @@ if uploaded_file is not None:
         else:
             st.warning("⚠️ No se detectó ninguna placa en la imagen.")        
 
-        """
-        if len(boxes) > 0:
-            x1, y1, x2, y2 = boxes[0]
-            # file_bytes = np.asarray(bytearray(uploaded_file.getvalue()), dtype=np.uint8)
-            # img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
-            plate_crop = img[int(y1):int(y2), int(x1):int(x2)]
-
-            st.image(cv2.cvtColor(plate_crop, cv2.COLOR_BGR2RGB), caption="Placa detectada (recorte)")
-            st.session_state["plate_crop"] = plate_crop
-        else:
-            st.warning("⚠️ No se detectó ninguna placa en la imagen.")
-
-        """
     # Botón para OCR
     if st.button("Reconocer Texto con OCR"):
         if "plate_crop" in st.session_state:
