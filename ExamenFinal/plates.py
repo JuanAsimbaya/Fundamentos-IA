@@ -72,7 +72,7 @@ if uploaded_file is not None:
     # Botón para OCR
     if st.button("Reconocer Texto con OCR"):
         if "plate_crop" in st.session_state:
-            st.image(cv2.cvtColor(st.session_state["plate_crop"], cv2.COLOR_BGR2RGB), caption="Recorte enviado a OCR")
+            st.image(cv2.cvtColor(st.session_state["plate_crop"], cv2.COLOR_BGR2RGB), caption="Imagen enviada a OCR")
             plate_text = extract_plate_text(st.session_state["plate_crop"])
             if plate_text:
                 st.success(f"✅ Placa reconocida: **{plate_text}**")
